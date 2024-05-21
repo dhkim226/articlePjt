@@ -1,4 +1,4 @@
-package com.fastcampus.article;
+package com.fastcampus.board;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
