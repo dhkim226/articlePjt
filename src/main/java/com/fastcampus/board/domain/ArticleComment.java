@@ -1,12 +1,19 @@
 package com.fastcampus.board.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.time.OffsetDateTime;
 
+
+@Getter
+@ToString
+@Table(indexes = {
+        @Index(columnList = "comment"),
+        @Index(columnList = "createdAt"),
+        @Index(columnList = "createdBy")
+})
 public class ArticleComment {
 
     @Id
@@ -16,12 +23,18 @@ public class ArticleComment {
 
     @Column
     private String comment;
+
     @Column
     private OffsetDateTime createdAt;
+
     @Column
     private String createdBy;
+
     @Column
     private OffsetDateTime modifiedAt;
+
     @Column
     private String modifiedBy;
+
+
 }
