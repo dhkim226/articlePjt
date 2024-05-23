@@ -3,17 +3,24 @@ package com.fastcampus.board.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.OffsetDateTime;
+import java.util.Objects;
+import java.util.Optional;
 
 
 @Getter
 @ToString
 @Table(indexes = {
-        @Index(columnList = "comment"),
+        @Index(columnList = "content"),
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
+@Entity
 public class ArticleComment {
 
     @Id
@@ -22,19 +29,32 @@ public class ArticleComment {
     private long comment_id;
 
     @Column
-    private String comment;
+    private String content;
 
-    @Column
+    @CreatedDate
     private OffsetDateTime createdAt;
 
-    @Column
+    @CreatedBy
     private String createdBy;
 
-    @Column
+    @LastModifiedDate
     private OffsetDateTime modifiedAt;
 
-    @Column
+    @LastModifiedBy
     private String modifiedBy;
 
+    // 테이블 연관관계
+    // 객체지향적으로 연관관계를 주기 위해 ManyToOne 사용
+    @ManyToOne(optional = false) //optional false는 필수값이다 의미
+    private Article article;
+
+    private ArticleComment(String content, Article article) {
+        this.content = content;
+        this.article = article;
+    }
+
+    public static ArticleComment of(String content, Article article){
+        return new ArticleComment(content, article);
+    }
 
 }

@@ -10,6 +10,9 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.OffsetDateTime;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @ToString
@@ -53,6 +56,11 @@ public class Article {
     @LastModifiedBy
     private String modifiedBy;
 
+    @ToString.Exclude
+    @OrderBy("article_id")
+    @OneToMany(mappedBy = "article")
+    private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
+
     private Article(String title, String comment, String hashtag) {
         this.title = title;
         this.comment = comment;
@@ -61,5 +69,17 @@ public class Article {
 
     public static Article of(String title, String comment, String hashtag){
         return new Article(title, comment, hashtag);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Article article)) return false;
+        return article_id == article.article_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(article_id);
     }
 }

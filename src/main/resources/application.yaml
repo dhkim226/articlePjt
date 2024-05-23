@@ -2,30 +2,18 @@ server:
   port: 8080
   servlet:
     context-path: /
-spring:
-  application:
-    name: Board Service
-  profiles:
-    active: common, local
-  datasource:
-    url: jdbc:postgresql://localhost:5432/article
-    username: postgres
-    password: postgres
-  jpa:
-    hibernate:
-      ddl-auto: none
-#    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-token:
-  signing:
-    key: 413F4490421655368566D5970337336763979244226452948404D6351
 
-logging:
-  level:
-    root: INFO   # Set the root logger level to INFO
-#    org.springframework: DEBUG # Set logging level for Spring Framework to DEBUG
-    com:
-      skcc.bife: DEBUG
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
 
