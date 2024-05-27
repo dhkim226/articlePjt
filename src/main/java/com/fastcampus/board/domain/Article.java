@@ -36,7 +36,7 @@ public class Article extends AuditingFields{
 
     @Column
     @Setter
-    private String comment;
+    private String content;
 
     @Column
     private String hashtag;
@@ -46,14 +46,14 @@ public class Article extends AuditingFields{
     @OneToMany(mappedBy = "article")
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
-    private Article(String title, String comment, String hashtag) {
+    private Article(String title, String content, String hashtag) {
         this.title = title;
-        this.comment = comment;
+        this.content = content;
         this.hashtag = hashtag;
     }
 
-    public static Article of(String title, String comment, String hashtag){
-        return new Article(title, comment, hashtag);
+    public static Article of(String title, String content, String hashtag){
+        return new Article(title, content, hashtag);
     }
 
     @Override
