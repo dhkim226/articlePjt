@@ -7,13 +7,23 @@ spring:
   profiles:
     active: test
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password: password
+    url: jdbc:postgresql://localhost:5432/article
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+#    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: update
+    show-sql: true
   h2:
     console:
       enabled: true
+  data:
+    rest:
+      base-path: /api
+      detection-strategy: annotated
 
