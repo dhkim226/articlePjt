@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 페이지</title>
+</head>
+<body>
+
+    <header>
+        대가리
+        <hr>
+    </header>
+    <main>
+        <form>
+            <label for="search-type" hideen>유형</label>
+            <select id="search-type" name="search-type">
+                <option>title</option>
+                <option>content</option>
+                <option>hashtag</option>
+                <option>id</option>
+            </select>
+            <label>
+            <input type="search" placeholder="검색어.." name="search-value">
+                <button type="submit">검색</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>제목</th>
+                    <th>해시태그</th>
+                    <th>직성자</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>첫글</td>
+                <td>#java</td>
+                <td>dongdong</td>
+                <td>2022-03-11</td>
+            </tr>
+            <tr>
+                <td>2글</td>
+                <td>#c</td>
+                <td>dong</td>
+                <td>2022-03-13</td>
+            </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+        <nav>
+            <table>
+                <tr>
+                    <td>previous</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>next</td>
+                </tr>
+            </table>
+        </nav>
+
+    </main>
+
+    <footer>
+        <hr>
+        footer
+    </footer>
+
+</body>
+</html>
