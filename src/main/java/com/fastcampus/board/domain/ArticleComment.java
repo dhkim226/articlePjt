@@ -1,6 +1,7 @@
 package com.fastcampus.board.domain;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedBy;
@@ -48,6 +49,9 @@ public class ArticleComment {
     @ManyToOne(optional = false) //optional false는 필수값이다 의미
     private Article article;
 
+    protected ArticleComment(){
+
+    }
     private ArticleComment(String content, Article article) {
         this.content = content;
         this.article = article;
